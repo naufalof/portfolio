@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naufal Aqiel Fitrachman - Web Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #2563eb;
+      --accent: #0284c7;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    header p.location {
+      font-size: 1.1rem;
+      color: #93c5fd;
+      margin-bottom: 20px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: #ffffff;
+      color: var(--primary);
+    }
+
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px 20px;
+      overflow-x: auto;
+    }
+
+    .nav-container a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-container a:hover {
+      color: var(--primary-light);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--border-color);
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      border-left: 5px solid var(--primary-light);
+      line-height: 1.7;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .role-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .company-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-light);
+    }
+
+    .date-location {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .org-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .bullet-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .bullet-list li {
+      margin-bottom: 8px;
+    }
+
+    .deck-link-container {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .deck-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 15px;
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .deck-btn:hover {
+      background: #dcfce7;
+      border-color: #86efac;
+    }
+
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #0f172a;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .card-header {
+        flex-direction: column;
+      }
+      .deck-link-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Naufal Aqiel Fitrachman</h1>
+      <p class="location">Depok, West Java, Indonesia</p>
+      <div class="contact-links">
+        <a href="mailto:naufalaqielf@gmail.com" class="contact-btn">✉ naufalaqielf@gmail.com</a>
+        <a href="tel:+6281319006924" class="contact-btn">📞 (+62) 813-1900-6924</a>
+        <a href="https://linkedin.com" target="_blank" class="contact-btn">🔗 LinkedIn Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#summary">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#organization">Organization</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Professional Summary -->
+    <section id="summary">
+      <h2 class="section-title">Professional Summary</h2>
+      <div class="summary-card">
+        Early-career professional experienced across cross-functional industries and roles, focused primarily on operations and process improvement. Skilled in applying quantitative and qualitative analytical frameworks to enable structured, data-driven decision-making. Proven track record in translating diverse, complex datasets into clear strategic recommendations for key stakeholders.
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="experience">
+      <h2 class="section-title">Work Experience & Internships</h2>
+
+      <!-- SME & Tech Consultant -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Subject Matter Expert & Tech Consultant (Project)</div>
+            <div class="company-name">Confidential Client</div>
+          </div>
+          <div class="date-location">Aug 2026 – Present | Jakarta, Indonesia</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Formulated domain-driven analytical frameworks to establish executive performance dashboards and reporting standards.</li>
+          <li>Refined data collection and visualization workflows, aligning technical deliverables with operational KPIs.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">Python</span>
+            <span class="badge">SQL</span>
+            <span class="badge">Figma</span>
+            <span class="badge">Technical Consulting</span>
+          </div>
+          <a href="#" target="_blank" class="deck-btn">📊 View Presentation Deck / Workflow ↗</a>
+        </div>
+      </div>
+
+      <!-- Kuelap -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Service Delivery Analyst (Full Time)</div>
+            <div class="company-name">PT. Kuelap Solusi Indonesia (Kuelap.Inc): SaaS Core Banking Platform Provider</div>
+          </div>
+          <div class="date-location">Sep 2024 – May 2025 | Jakarta, Indonesia</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Managed end-to-end SaaS core banking system implementation for 15+ financial institutions (BPRs and cooperatives), executing data migration pipelines with 100% record accuracy.</li>
+          <li>Delivered user training, Quality Assurance (QA), and conducted client field visits to drive platform adoption and support commercial pitching.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">Google Sheets</span>
+            <span class="badge">Google Apps Script</span>
+            <span class="badge">System Implementation</span>
+            <span class="badge">Data Migration</span>
+          </div>
+          <a href="#" target="_blank" class="deck-btn">📊 View Kuelap Deck / Workflow ↗</a>
+        </div>
+      </div>
+
+      <!-- ALAMI -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Process Development Management Intern</div>
+            <div class="company-name">PT. ALAMI Teknologi Sharia (Sharia P2P Lending)</div>
+          </div>
+          <div class="date-location">Apr 2022 – Nov 2022 | Jakarta, Indonesia</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Monitored daily financing application pipelines using aging tracking and FIFO methods, contributing to improved SLA compliance.</li>
+          <li>Spearheaded cross-functional alignment between Legal, Risk, and Commercial teams to resolve document bottlenecks and standardize filing workflows.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">Asana</span>
+            <span class="badge">SLA Optimization</span>
+            <span class="badge">Process Mapping</span>
+            <span class="badge">UAT Testing</span>
+          </div>
+          <a href="#" target="_blank" class="deck-btn">📊 View ALAMI Deck / Workflow ↗</a>
+        </div>
+      </div>
+
+      <!-- KALOG -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Operations Intern</div>
+            <div class="company-name">PT. KAI Logistik (KALOG)</div>
+          </div>
+          <div class="date-location">Jun 2023 – Aug 2023 | Jakarta, Indonesia</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Supported the operational audit of 4 cargo claim SOPs, identifying misallocated cost structures between parent and subsidiary entities to eliminate financial risks.</li>
+          <li>Assisted in developing a 5-criteria weighted vendor evaluation framework for ~Rp1.5B container shipments to optimize insurance premiums and coverage.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">Excel</span>
+            <span class="badge">Visio</span>
+            <span class="badge">Risk Audit</span>
+            <span class="badge">Feasibility Study</span>
+          </div>
+          <a href="#" target="_blank" class="deck-btn">📊 View KALOG Deck / Workflow ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects & Freelance -->
+    <section id="projects">
+      <h2 class="section-title">Freelance & Projects</h2>
+
+      <!-- Capstone Project -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Data Engineering Capstone Project</div>
+            <div class="company-name">Gramedia Academy x MAKARI UI</div>
+          </div>
+          <div class="date-location">Aug 2026 – Oct 2026</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Built end-to-end distributed data pipelines and database schemas using SQL, PostgreSQL, and Google Cloud Platform (GCP).</li>
+          <li>Developed predictive analytics models using Python in Google Colab and designed interactive Tableau dashboards for executive reporting.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">GCP</span>
+            <span class="badge">Python</span>
+            <span class="badge">Tableau</span>
+          </div>
+          <a href="#" target="_blank" class="deck-btn">📊 View Capstone Deck / Dashboard ↗</a>
+        </div>
+      </div>
+
+      <!-- Final Project PARE Courses (Hokkaido Water Assessment) -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Final Project PARE Courses: Environmental Field Assessment & ESG Benchmarking</div>
+            <div class="company-name">Hokkaido University | Hokkaido, Japan</div>
+          </div>
+          <div class="date-location">Jun 2024 – Jul 2024</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Conducted environmental field assessments in Sobetsu and Lake Toya (water pH and arsenic contamination testing, local hydropower evaluation, invasive species analysis).</li>
+          <li>Developed a comparative ESG benchmarking framework comparing Japan's environmental restoration models with the Citarum River basin in Indonesia.</li>
+        </ul>
+        <div class="deck-link-container">
+          <div class="badge-container">
+            <span class="badge">Environmental Audit</span>
+            <span class="badge">Water Quality Testing</span>
+            <span class="badge">PARE Framework</span>
+            <span class="badge">ESG Benchmarking</span>
+          </div>
+          <a href="https://docs.google.com/presentation/d/1cDXKOnAVsEjOh0EWSBhK1WuZiXzCuv4FVpwc-QeOFFA/edit?usp=sharing" target="_blank" class="deck-btn">📊 View Final Project Deck ↗</a>
+        </div>
+      </div>
+
+      <!-- AI Trainer -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">AI Trainer (Freelance)</div>
+            <div class="company-name">Outlier.AI</div>
+          </div>
+          <div class="date-location">Oct 2024 – Jan 2025</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Reviewed and evaluated LLM-generated mathematical and logical outputs as Reviewer 1/2, repairing prompts and outputs to improve model reasoning accuracy.</li>
+        </ul>
+        <div class="badge-container">
+          <span class="badge">LLM Evaluation</span>
+          <span class="badge">Prompt Engineering</span>
+          <span class="badge">Logical Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+
+      <!-- IPB -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Master of Logistics (Agro-Maritime Logistics)</div>
+            <div class="company-name">IPB University | Bogor, Indonesia</div>
+          </div>
+          <div class="date-location">Jan 2023 – Oct 2025 | GPA: 3.83 (With Honours)</div>
+        </div>
+        <div class="deck-link-container">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Overview matakuliah & riset logistik:</span>
+          <a href="https://docs.google.com/presentation/d/1T3hv25mPT9ek9qmmRUa31fP1CHV6PoZJa7BKLnSBCg4/edit?slide=id.p7#slide=id.p7" target="_blank" class="deck-btn">📊 View Academic Overview Deck ↗</a>
+        </div>
+      </div>
+
+      <!-- NDDE -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Non-Diploma in Data Engineering (NDDE)</div>
+            <div class="company-name">Gramedia Academy x MAKARI UI | Depok, Indonesia</div>
+          </div>
+          <div class="date-location">Aug 2026 – Oct 2026</div>
+        </div>
+        <div class="badge-container" style="margin-top: 8px;">
+          <span class="badge">Tableau</span>
+          <span class="badge">SQL</span>
+          <span class="badge">Apache Spark</span>
+          <span class="badge">Python</span>
+          <span class="badge">Machine Learning Libraries</span>
+        </div>
+        <div class="deck-link-container">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Overview kurikulum & hands-on lab:</span>
+          <a href="https://docs.google.com/presentation/d/12yUXU6rMaDDIZniKkDfdDe97m2CW_qsbiBahOGRPZwQ/edit?slide=id.p1#slide=id.p1" target="_blank" class="deck-btn">📊 View NDDE Coursework Deck ↗</a>
+        </div>
+      </div>
+
+      <!-- Hokkaido -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Exchange Participant (OGG’s / PARE Program)</div>
+            <div class="company-name">Hokkaido University | Hokkaido, Japan</div>
+          </div>
+          <div class="date-location">Jun 2024 – Jul 2024</div>
+        </div>
+        <ul class="bullet-list" style="margin-top: 8px;">
+          <li>OGG's Problem Based Learning (PBL), Intro to SDGs, PARE Framework.</li>
+        </ul>
+        <div class="deck-link-container">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Overview perkuliahan & program:</span>
+          <a href="https://docs.google.com/presentation/d/1cDXKOnAVsEjOh0EWSBhK1WuZiXzCuv4FVpwc-QeOFFA/edit?usp=sharing" target="_blank" class="deck-btn">📊 View Program Overview Deck ↗</a>
+        </div>
+      </div>
+
+      <!-- Telkom -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Bachelor of Engineering (Industrial Engineering)</div>
+            <div class="company-name">Telkom University | Bandung, Indonesia</div>
+          </div>
+          <div class="date-location">Aug 2017 – Sep 2022 | GPA: 2.87 (With Merit)</div>
+        </div>
+        <div class="deck-link-container">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Overview matakuliah & praktikum SAP ERP:</span>
+          <a href="#" target="_blank" class="deck-btn">📊 View Academic Overview Deck ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research & Publications -->
+    <section id="research">
+      <h2 class="section-title">Research & Publications</h2>
+
+      <div class="card">
+        <div class="role-title">Master's Thesis: End-to-End Supply Chain & Logistics Optimization</div>
+        <a href="https://repository.ipb.ac.id/handle/123456789/166729" target="_blank" class="project-link">
+          Supply Chain Analysis of Patin Fish Processing at PT. Dimas Reiza Perwira, East Java ↗
+        </a>
+        <ul class="bullet-list" style="margin-top: 8px;">
+          <li>Analyzed end-to-end supply chain performance of a regional processed food manufacturer, applying AHP & value chain mapping for a strategic improvement roadmap.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role-title">Bachelor's Thesis: Equipment Maintenance & Operational Efficiency Optimization</div>
+        <a href="https://repository.telkomuniversity.ac.id/home/catalog/id/181250/slug/perancangan-sistem-pemeliharaan-peralatan-penggiling-ikan-menggunakan-metode-overall-equipment-effectiveness-oee-dan-overall-equipment-cost-loss-oecl-di-cv-x.html" target="_blank" class="project-link">
+          Design of Fish Grinder Maintenance System Using OEE and OECL Methods at CV.X ↗
+        </a>
+        <ul class="bullet-list" style="margin-top: 8px;">
+          <li>Designed a data-driven maintenance system across 3 production grinding machines using OEE & OECL methodologies to eliminate equipment bottlenecks.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role-title">Research Project: Supply Chain Value & Reverse Logistics Framework</div>
+        <a href="https://openurl.ebsco.com/contentitem/gcd:192215109?sid=ebsco:plink:crawler-gcd&id=ebsco:gcd:192215109&crl=c&jrnl=25491326" target="_blank" class="project-link">
+          Improving Fish Supply Chain Value Through Reverse Logistics Management at East Java Province ↗
+        </a>
+        <ul class="bullet-list" style="margin-top: 8px;">
+          <li>Developed a reverse logistics framework aimed at improving resource efficiency and reducing waste across food processing distribution networks.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="role-title">Research Project: Stakeholder Conflict Resolution & Regional Impact Analysis</div>
+        <a href="https://search.ebscohost.com/login.aspx?direct=true&profile=ehost&scope=site&authtype=crawler&jrnl=25491326&AN=191248303&h=Sjvnk3K0TSUbiaMp7rdokkXtfjwR4PLh2D5DL1yby5cT12clnFDcWvc3uAa9%2BKxGs77mxGmsUIh%2Fi1mPSX7amQ%3D%3D&crl=c" target="_blank" class="project-link">
+          Resolution of Conflicts in Maritime Potential Utilization at Labuhan Haji Fishing Port Area, Lombok ↗
+        </a>
+        <ul class="bullet-list" style="margin-top: 8px;">
+          <li>Evaluated environmental and economic variables affecting regional operations to align cross-functional stakeholders toward sustainable supply chain outcomes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Organization & Leadership Experience -->
+    <section id="organization">
+      <h2 class="section-title">Organization & Leadership Experience</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Group Leader at PBL</div>
+            <div class="company-name">Hokkaido University - IPB University</div>
+          </div>
+          <div class="date-location">Jun 2024 – Jul 2024 | Hokkaido, Japan</div>
+        </div>
+        <p class="org-desc">Problem Based Learning (PBL): An OGGs Program course where students research and present on global issues through academic or visual/theatrical formats.</p>
+        <ul class="bullet-list">
+          <li>Led an international student team to research global sustainability challenges and deliver structured final presentations.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Coordinator and Staff of Event Division</div>
+            <div class="company-name">Batavia on Telkom (Telkom University)</div>
+          </div>
+          <div class="date-location">Sep 2017 – May 2019 | Bandung, Indonesia</div>
+        </div>
+        <p class="org-desc">A student community that gathers students from the Jabodetabek region to foster social connection and organize campus events.</p>
+        <ul class="bullet-list">
+          <li>Led event planning and execution teams to foster regional student engagement and organize campus programs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Staff of Equipment Division</div>
+            <div class="company-name">Increase (Telkom University)</div>
+          </div>
+          <div class="date-location">Sep 2018 – May 2019 | Bandung, Indonesia</div>
+        </div>
+        <p class="org-desc">A committee under the Industrial Engineering Student Union (HMTI) that organizes national level competitions simulating industrial engineering case studies.</p>
+        <ul class="bullet-list">
+          <li>Managed end-to-end equipment logistics, sound systems, and venue infrastructure for a national-level industrial engineering case study competition.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="role-title">Staff of Fundraising Division</div>
+            <div class="company-name">Inaugurasi (Telkom University)</div>
+          </div>
+          <div class="date-location">Sep 2017 – May 2018 | Bandung, Indonesia</div>
+        </div>
+        <p class="org-desc">An annual committee within the Industrial Engineering Student Union (HMTI) focused on creating social orientation events to welcome and integrate first-year students.</p>
+        <ul class="bullet-list">
+          <li>Managed fundraising initiatives to generate target unit budgets for large-scale student orientation programs.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Naufal Aqiel Fitrachman. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
